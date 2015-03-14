@@ -1,16 +1,20 @@
 package com.csumb.dmdc.Activity;
 
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.csumb.dmdc.Fragment.DrawerFragment;
 import com.csumb.dmdc.R;
 
 
 public class MainActivity extends ActionBarActivity {
 
+    DrawerFragment drawer;
+    DrawerLayout mDrawerLayout;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +23,10 @@ public class MainActivity extends ActionBarActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+        toolbar.setTitle("DashBoard");
+        drawer = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.list_main);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.setUp(savedInstanceState,R.id.list_main,mDrawerLayout,toolbar);
     }
 
 
