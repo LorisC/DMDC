@@ -17,6 +17,7 @@ public class Check_list_fragment extends Fragment {
 
 
     public View v;
+    String test;
     public Check_list_fragment() {
         // Required empty public constructor
     }
