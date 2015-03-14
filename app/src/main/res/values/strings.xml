@@ -20,5 +20,6 @@
     <string name="title_activity_sign_up">SignUpActivity</string>
     <string name="account">Don\'t have a account ?</string>
     <string name="login">Log in with NFC</string>
+    <string name="title_activity_crop">CropActivity</string>
 
 </resources>

@@ -133,7 +133,7 @@ public class DrawerFragment extends Fragment {
         android.app.Fragment fragment = null;
         switch (position) {
             case 0:
-                //fragment = new HomeFragment();
+                fragment = new HomeFragment();
                 break;
             case 1:
                 //fragment = new ProfileFragment();
