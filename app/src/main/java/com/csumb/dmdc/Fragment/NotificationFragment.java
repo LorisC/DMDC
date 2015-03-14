@@ -3,6 +3,7 @@ package com.csumb.dmdc.Fragment;
 
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,19 +34,21 @@ public class NotificationFragment extends Fragment {
         // Required empty public constructor
         current = ParseUser.getCurrentUser();
         String userId = current.getObjectId();
-        GetParseObject getParseObject = new GetParseObject("notifications" ,"user", 1, userId);
+        GetParseObject getParseObject = new GetParseObject("notifications" ,"objectId", 1 , current);
+        List<ParseObject> list = new ArrayList<>();
 
         try {
-            List<ParseObject> list = getParseObject.execute().get();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        } catch (ExecutionException e) {
+           list = getParseObject.execute().get();
+            for (int i = 0; i < list.size(); i++) {
+                list.get(i).getString("message");
+                Log.d("teste",list.get(i).getString("message") );
+            }
+
+        } catch (InterruptedException | ExecutionException e) {
             e.printStackTrace();
         }
 
-        for (int i = 0; i < list.size(); i++) {
-            list.get(0).getString("message");
-        }
+
     }
 
 
@@ -57,12 +60,12 @@ public class NotificationFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_notification, container, false);
         listView = (ListView) v.findViewById(R.id.listView);
         ArrayList<String> notificationList = new ArrayList<>();
-
+        try{
         for (int i = 0; i < list.size(); i++){
             if ((boolean)list.get(i).get("iscompleted")){
                 notificationList.add(list.get(i).getString("message"));
             }
-        }
+        }}catch (Exception e){}
 
 
 

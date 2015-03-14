@@ -5,9 +5,11 @@ import android.os.AsyncTask;
 import android.util.Log;
 
 import com.parse.FindCallback;
+import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,15 +24,17 @@ public class GetParseObject extends AsyncTask<Void, Void, List<ParseObject>> {
     }
 
     private List<ParseObject> list_parse = new ArrayList<>();
-    String table_name , col_name, user;
+    String table_name , col_name;
     int switch_value = 0 ;
+    ParseUser user;
+
     public void populate(List<ParseObject> list)
     {
         for (int i = 0 ; i< list.size(); i++) {
             this.list_parse.add(list.get(i));
             Log.d("merde", list_parse.get(i).toString());
         }
-        Log.d("Ah putain de merde", String.valueOf(list_parse.get(1).get("birthcertif")))         ;
+        //Log.d("Ah putain de merde", String.valueOf(list_parse.get(1).get("birthcertif")))         ;
     }
 
     public GetParseObject(String table_name, String col_name ) {
@@ -38,15 +42,15 @@ public class GetParseObject extends AsyncTask<Void, Void, List<ParseObject>> {
         this .col_name = col_name;
     }
 
-    public GetParseObject(String table_name, String col_name, int switch_value , String user ) {
+    public GetParseObject(String table_name, String col_name, int switch_value, ParseUser user  ) {
         this.table_name = table_name;
         this .col_name = col_name;
-        this.user   = user;
         this.switch_value = switch_value;
+        this.user = user;
     }
-    private void getobject ()
-    {/*ParseQuery<ParseObject> query = ParseQuery.getQuery(this.table_name);
-        query.whereNotEqualTo(this.col_name, "");
+    /*private void getobject ()
+    {ParseQuery<ParseObject> query = ParseQuery.getQuery(this.table_name);
+        query.whereEqualTo(this.col_name, ParseUser.getCurrentUser());
         query.findInBackground(new FindCallback<ParseObject>() {
             public void done(List<ParseObject> scoreList, ParseException e) {
                 if (e == null) {
@@ -59,25 +63,26 @@ public class GetParseObject extends AsyncTask<Void, Void, List<ParseObject>> {
                     Log.d("score", "Error: " + e.getMessage());
                 }
             }
-        });*/}
+        });}*/
 
     @Override
     protected List<ParseObject> doInBackground(Void... params) {
-        getobject();
+        //getobject();
         ParseQuery<ParseObject> query = ParseQuery.getQuery(this.table_name) ;
         try {
             switch (switch_value)
             {
                 case 1:
-                    query.whereEqualTo(this.col_name,user );
+                    //ParseUser usero =(ParseUser) ParseObject.createWithoutData("_User",user);
+                    query.whereNotEqualTo(this.col_name,user );
                     break;
                 default:
                     query.whereNotEqualTo(this.col_name, "");
                     break;
 
             }
-
-            List<ParseObject> list = query.find();
+            List<ParseObject> list;
+            list = query.find();
             populate(list);
         } catch (ParseException e) {
             e.printStackTrace();
