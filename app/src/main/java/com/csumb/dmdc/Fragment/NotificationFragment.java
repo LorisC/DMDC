@@ -12,6 +12,7 @@ import com.csumb.dmdc.Adapter.NotificationAdapter;
 import com.csumb.dmdc.Asynctask.GetParseObject;
 import com.csumb.dmdc.R;
 import com.parse.ParseObject;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,12 +26,15 @@ public class NotificationFragment extends Fragment {
     View v;
     ListView listView;
     NotificationAdapter notificationAdapter;
-
+    ParseUser  current;
+    List<ParseObject> list;
 
     public NotificationFragment() {
         // Required empty public constructor
+        current = ParseUser.getCurrentUser();
+        String userId = current.getObjectId();
+        GetParseObject getParseObject = new GetParseObject("notifications" ,"user", 1, userId);
 
-        GetParseObject getParseObject = new GetParseObject("notifications","message");
         try {
             List<ParseObject> list = getParseObject.execute().get();
         } catch (InterruptedException e) {
@@ -38,7 +42,12 @@ public class NotificationFragment extends Fragment {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
+
+        for (int i = 0; i < list.size(); i++) {
+            list.get(0).getString("message");
+        }
     }
+
 
 
     @Override
@@ -47,9 +56,23 @@ public class NotificationFragment extends Fragment {
         // Inflate the layout for this fragment
         v = inflater.inflate(R.layout.fragment_notification, container, false);
         listView = (ListView) v.findViewById(R.id.listView);
-        ArrayList<String> list = new ArrayList<>();
-        notificationAdapter = new  NotificationAdapter(getActivity(),list);
+        ArrayList<String> notificationList = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++){
+            if ((boolean)list.get(i).get("iscompleted")){
+                notificationList.add(list.get(i).getString("message"));
+            }
+        }
+
+
+
+
+        notificationAdapter = new  NotificationAdapter(getActivity(),notificationList);
         listView.setAdapter(notificationAdapter);
+
+
+
+
         return v;
     }
 
