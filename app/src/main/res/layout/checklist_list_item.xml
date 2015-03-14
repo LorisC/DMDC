@@ -6,30 +6,20 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="100dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical">
 
-            <Space
-                android:layout_width="20px"
-                android:layout_height="20px"
-                android:layout_gravity="center_horizontal"
-                android:background="#ff6149ff" />
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:id="@+id/imageView"
+                android:layout_gravity="center_horizontal" />
 
-            <CheckBox
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="New CheckBox"
-                android:id="@+id/check" />
-
-            <Space
-                android:layout_width="20px"
-                android:layout_height="20px"
-                android:layout_gravity="center_horizontal"
-                android:background="#ff6149ff" />
         </LinearLayout>
 
         <TextView
