@@ -1,11 +1,13 @@
 package com.csumb.dmdc.Adapter;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.csumb.dmdc.ParseClass.CheckList;
@@ -51,8 +53,9 @@ public class CheckListAdapter extends BaseAdapter {
         TextView text = (TextView) v.findViewById(R.id.checkText);
         text.setText(parseObjects.get(position).getString("message"));
         Boolean checked = parseObjects.get(position).getBoolean("completed");
-        CheckBox  check = (CheckBox) v.findViewById(R.id.check);
-        check.setChecked(checked);
+        ImageView check = (ImageView) v.findViewById(R.id.imageView);
+        if(checked){check.setBackgroundColor(Color.GREEN);}
+        else {check.setBackgroundColor(Color.RED);}
         return  v;
 
     }
