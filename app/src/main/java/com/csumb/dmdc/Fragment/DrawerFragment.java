@@ -136,7 +136,7 @@ public class DrawerFragment extends Fragment {
                 fragment = new HomeFragment();
                 break;
             case 1:
-                //fragment = new ProfileFragment();
+                fragment = new Profile();
                 break;
             case 2:
                 //fragment = new NotificationFragment();
