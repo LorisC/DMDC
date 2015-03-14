@@ -40,6 +40,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         //ParseObject.registerSubclass(Spot.class);
+        ParseObject.registerSubclass(CheckList.class);
         Parse.initialize(this, "x4EvKqMkdeDhCy7r3C7TlhrUhWupVijQj6dL3A5b",
                 "2095PSj9B5olMyyg7e9BcFrdr8WL4MReTwb4buWP");
         //ParseInstallation.

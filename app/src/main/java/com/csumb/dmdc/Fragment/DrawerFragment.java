@@ -142,7 +142,7 @@ public class DrawerFragment extends Fragment {
                 //fragment = new NotificationFragment();
                 break;
             case 3:
-                fragment = new Check_list_fragment();
+                fragment = new CheckListFragment();
                 break;
             case 4:
 
