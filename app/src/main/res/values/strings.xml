@@ -6,6 +6,7 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string-array name="navdrav_array">
         <item>HOME</item>
         <item>PROFILE</item>
@@ -15,4 +16,12 @@
         <item>FEEDBACK</item>
         <item>LOGOUT</item>
     </string-array>
+
+    <string name="title_activity_sign_up">SignUpActivity</string>
+    <string name="account">Don\'t have a account ?</string>
+    <string name="login">Log in with NFC</string>
+    <string name="title_activity_crop">CropActivity</string>
+    <string name="error_intro">error</string>
+    <string name="error_blank_username">blank username</string>
+
 </resources>

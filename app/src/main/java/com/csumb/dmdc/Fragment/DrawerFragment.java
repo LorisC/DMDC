@@ -133,7 +133,7 @@ public class DrawerFragment extends Fragment {
         android.app.Fragment fragment = null;
         switch (position) {
             case 0:
-                //fragment = new HomeFragment();
+                fragment = new HomeFragment();
                 break;
             case 1:
                 //fragment = new ProfileFragment();
@@ -142,12 +142,12 @@ public class DrawerFragment extends Fragment {
                 //fragment = new NotificationFragment();
                 break;
             case 3:
-                fragment = new Check_list_fragment();
+                fragment = new CheckListFragment();
                 break;
             case 4:
 
                 break;
-            case 5:
+            case 6:
                 ParseUser.logOut();
                 Toast.makeText(getActivity().getApplicationContext(), "Disconnected...", Toast.LENGTH_LONG).show();
                 Intent i = new Intent(getActivity(), LoginActivity.class);
