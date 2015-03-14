@@ -2,15 +2,26 @@ package com.csumb.dmdc.Fragment;
 
 import android.app.Activity;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+import com.parse.ParseUser;
+
 import com.csumb.dmdc.R;
 import com.parse.ParseUser;
+
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,7 +41,9 @@ public class Profile extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
+    List<ParseObject> ob;
+    private List<Profile> Profile = null;
+    private WeakReference<RemoteDataTask> asyncTaskWeakRef;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,14 +82,70 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        TextView user_text = (TextView) getView().findViewById(R.id.username);
-        TextView email_text = (TextView) getView().findViewById(R.id.email);
-        ParseUser current = ParseUser.getCurrentUser();
-        String username = current.getUsername();
-        String email = current.getEmail();
-        user_text.setText(username);
-        email_text.setText(email);
-        return inflater.inflate(R.layout.fragment_profile, container, false);
+        View v = inflater.inflate(R.layout.fragment_profile,container,false);
+        startRemoteDataTask();
+        return v;
+
+
+
+    }
+
+    private void startRemoteDataTask() {
+        RemoteDataTask asyncTask = new RemoteDataTask(this);
+        this.asyncTaskWeakRef = new WeakReference<RemoteDataTask >(asyncTask );
+        asyncTask.execute();
+    }
+    private boolean isAsyncTaskPendingOrRunning() {
+        return this.asyncTaskWeakRef != null &&
+                this.asyncTaskWeakRef.get() != null &&
+                !this.asyncTaskWeakRef.get().getStatus().equals(AsyncTask.Status.FINISHED);
+    }
+
+    private class RemoteDataTask extends AsyncTask<Void, Void, Void>{
+        private WeakReference<Profile> fragmetnWeakRef;
+
+        public RemoteDataTask(Profile fragment)
+        {
+            this.fragmetnWeakRef = new WeakReference<Profile>(fragment);
+        }
+        @Override
+        protected void onPreExecute()
+        {
+            super.onPreExecute();
+        }
+        @Override
+        protected Void doInBackground(Void... params){
+            //create
+            try{
+                ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("User");
+
+                query.orderByDescending("createdAt");
+                ob = query.find();
+                for(ParseObject info : ob)
+                {
+                    ParseFile username = (ParseFile) info.get("username");
+                    ParseFile email = (ParseFile) info.get("email");
+                    ParseFile profile_pic = (ParseFile) info.get("profile_pic");
+                }
+            }
+            catch(ParseException e)
+            {
+                Log.e("Error", e.getMessage());
+                e.printStackTrace();
+            }
+            return null;
+        }
+        @Override
+        protected void onPostExecute(Void result)
+        {
+            TextView user_text = (TextView) getView().findViewById(R.id.username);
+            TextView email_text = (TextView) getView().findViewById(R.id.email);
+            ParseUser current = ParseUser.getCurrentUser();
+            String username = current.getUsername();
+            String email = current.getEmail();
+            user_text.setText(username);
+            email_text.setText(email);
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
