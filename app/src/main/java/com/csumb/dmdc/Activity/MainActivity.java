@@ -23,6 +23,7 @@ public class MainActivity extends ActionBarActivity {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
         }
+        //
         toolbar.setTitle("DashBoard");
         drawer = (DrawerFragment) getSupportFragmentManager().findFragmentById(R.id.list_main);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
