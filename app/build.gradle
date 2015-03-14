@@ -26,5 +26,6 @@ dependencies {
     compile files('libs/Parse-1.7.1/Parse-1.7.1.jar')
     compile 'com.melnykov:floatingactionbutton:1.2.0'
     compile 'de.hdodenhof:circleimageview:1.2.2'
+    compile 'net.danlew:android.joda:2.7.1'
 
 }
