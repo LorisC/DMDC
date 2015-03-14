@@ -48,7 +48,7 @@ public class NotificationFragment extends Fragment {
         }
     }
 
-
+//wtf
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
