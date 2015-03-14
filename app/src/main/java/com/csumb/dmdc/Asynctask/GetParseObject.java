@@ -30,7 +30,7 @@ public class GetParseObject extends AsyncTask<Void, Void, List<ParseObject>> {
             this.list_parse.add(list.get(i));
             Log.d("merde", list_parse.get(i).toString());
         }
-        Log.d("Ah putain de merde", String.valueOf(list_parse.get(1).get("birthcertif")))      ;
+        Log.d("Ah putain de merde", String.valueOf(list_parse.get(1).get("birthcertif")))         ;
     }
 
     public GetParseObject(String table_name, String col_name ) {
