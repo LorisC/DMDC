@@ -33,23 +33,24 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         v =  inflater.inflate(R.layout.fragment_home, container, false);
         WebView myWebView = (WebView) v.findViewById(R.id.webview);
+        myWebView.loadUrl("https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4");
         WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-        myWebView.setWebViewClient(new MyWebViewClient());
-        myWebView.loadUrl("http://www.dmdc.osd.mil/appj/dwp/index.jsp");
+        webSettings.setJavaScriptEnabled(false);
+        //myWebView.setWebViewClient(new MyWebViewClient());
+
         return v;
     }
     private class MyWebViewClient extends WebViewClient {
         @Override
         public boolean shouldOverrideUrlLoading(WebView view, String url) {
-            if (Uri.parse(url).getHost().equals("www.example.com")) {
+            if (Uri.parse(url).getHost().equals("https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4")) {
                 // This is my web site, so do not override; let my WebView load the page
                 return false;
             }
             // Otherwise, the link is not for a page on my site, so launch another Activity that handles URLs
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
             startActivity(intent);
-            return true;
+            return false;
         }
     }
 
