@@ -8,4 +8,11 @@
         android:text="lolo"
        />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/check_test_button"
+        android:layout_gravity="center" />
+
 </FrameLayout>
