@@ -14,7 +14,6 @@
         android:text="Large Text"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textStyle="bold"
-        android:textSize="15dp"
         android:gravity="left"
         android:layout_gravity="bottom" />
 
