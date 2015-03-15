@@ -28,14 +28,14 @@ public class NotificationFragment extends Fragment {
     ListView listView;
     NotificationAdapter notificationAdapter;
     ParseUser  current;
-    List<ParseObject> list;
+    List<ParseObject> list  =  new ArrayList<>();
 
     public NotificationFragment() {
         // Required empty public constructor
         current = ParseUser.getCurrentUser();
         String userId = current.getObjectId();
-        GetParseObject getParseObject = new GetParseObject("notifications" ,"objectId", 1 , current);
-        List<ParseObject> list = new ArrayList<>();
+        GetParseObject getParseObject = new GetParseObject("notifications" ,"user", 1 , current);
+
 
         try {
            list = getParseObject.execute().get();
@@ -60,17 +60,14 @@ public class NotificationFragment extends Fragment {
         v = inflater.inflate(R.layout.fragment_notification, container, false);
         listView = (ListView) v.findViewById(R.id.listView);
         ArrayList<String> notificationList = new ArrayList<>();
-        try{
+        notificationAdapter = new  NotificationAdapter(getActivity(),notificationList);
         for (int i = 0; i < list.size(); i++){
-            if ((boolean)list.get(i).get("iscompleted")){
+            boolean iscompleted = list.get(i).getBoolean("iscompleted");
+            if (!iscompleted){
                 notificationList.add(list.get(i).getString("message"));
             }
-        }}catch (Exception e){}
+        }
 
-
-
-
-        notificationAdapter = new  NotificationAdapter(getActivity(),notificationList);
         listView.setAdapter(notificationAdapter);
 
 

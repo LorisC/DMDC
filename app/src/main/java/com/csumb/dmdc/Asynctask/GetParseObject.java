@@ -74,7 +74,7 @@ public class GetParseObject extends AsyncTask<Void, Void, List<ParseObject>> {
             {
                 case 1:
                     //ParseUser usero =(ParseUser) ParseObject.createWithoutData("_User",user);
-                    query.whereNotEqualTo(this.col_name,user );
+                    query.whereEqualTo(this.col_name,user );
                     break;
                 default:
                     query.whereNotEqualTo(this.col_name, "");
