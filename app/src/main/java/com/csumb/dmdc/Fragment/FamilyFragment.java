@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.csumb.dmdc.Activity.AddFActivity;
 import com.csumb.dmdc.Activity.CropActivity;
 import com.csumb.dmdc.Adapter.CheckListAdapter;
 import com.csumb.dmdc.Adapter.FamilyAdapter;
@@ -130,7 +131,7 @@ public class FamilyFragment extends Fragment {
             fab.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent i = new Intent(getActivity(), CropActivity.class);
+                    Intent i = new Intent(getActivity(), AddFActivity.class);
                     getActivity().startActivity(i);
                 }
             });

@@ -26,5 +26,6 @@
     <string name="feedbackmessage">jezhfoz</string>
     <string name="feedbackmessagesended">jezhfoz</string>
     <string name="send">Send</string>
+    <string name="title_activity_add_f">AddFActivity</string>
 
 </resources>
