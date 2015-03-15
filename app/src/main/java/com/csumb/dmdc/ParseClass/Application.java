@@ -15,6 +15,8 @@ import com.parse.ParsePush;
 import com.parse.ParseUser;
 import com.parse.SaveCallback;
 
+import us.costan.chrome.ChromeView;
+
 /**
  * Created by banal_a on 11/29/14.
  */
@@ -40,6 +42,7 @@ public class Application extends android.app.Application {
     public void onCreate() {
         super.onCreate();
         //ParseObject.registerSubclass(Spot.class);
+        ChromeView.initialize(this);
         ParseObject.registerSubclass(CheckList.class);
         Parse.initialize(this, "x4EvKqMkdeDhCy7r3C7TlhrUhWupVijQj6dL3A5b",
                 "2095PSj9B5olMyyg7e9BcFrdr8WL4MReTwb4buWP");

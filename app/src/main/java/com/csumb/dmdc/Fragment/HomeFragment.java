@@ -16,6 +16,8 @@ import android.widget.Button;
 import com.csumb.dmdc.Activity.CropActivity;
 import com.csumb.dmdc.R;
 
+import us.costan.chrome.ChromeView;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -32,10 +34,13 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v =  inflater.inflate(R.layout.fragment_home, container, false);
-        WebView myWebView = (WebView) v.findViewById(R.id.webview);
-        myWebView.loadUrl("https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4");
-        WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(false);
+        ChromeView chromeView = (ChromeView)v.findViewById(R.id.gameUiView);
+        chromeView.getSettings().setJavaScriptEnabled(true);
+        String myurl = "https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4";
+        chromeView.loadUrl("https://m.facebook.com/go2dmdc?_rdr");
+        //myWebView.loadUrl("https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4");
+        //WebSettings webSettings = myWebView.getSettings();
+        //webSettings.setJavaScriptEnabled(false);
         //myWebView.setWebViewClient(new MyWebViewClient());
 
         return v;
