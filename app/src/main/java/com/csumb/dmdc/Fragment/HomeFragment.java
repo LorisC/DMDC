@@ -36,6 +36,7 @@ public class HomeFragment extends Fragment {
         String myurl = "https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4";
         TouchyWebView myWebView = (TouchyWebView) v.findViewById(R.id.view);
         myWebView.loadUrl("https://mobile.twitter.com/dmdc");
+        //
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         myWebView.setWebViewClient(new MyWebViewClient());
