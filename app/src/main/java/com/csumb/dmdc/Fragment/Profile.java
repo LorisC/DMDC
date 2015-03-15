@@ -137,6 +137,10 @@ public class Profile extends Fragment {
                 {
                     ParseFile username = (ParseFile) info.get("name");
                     ParseFile email = (ParseFile) info.get("email");
+                    ParseFile gender = (ParseFile) info.get("Gender");
+                    ParseFile rank = (ParseFile) info.get("Position");
+                    ParseFile deployed = (ParseFile) info.get("Currently");
+                    ParseFile currently_placed = (ParseFile) info.get("Last_deployment");
                     ParseFile profile_pic = (ParseFile) info.get("profile_pic");
                     if(profile_pic!=null){
                         Picasso.with(getActivity()).load(profile_pic.getUrl())
@@ -155,11 +159,26 @@ public class Profile extends Fragment {
         {
             TextView user_text = (TextView) getView().findViewById(R.id.username);
             TextView email_text = (TextView) getView().findViewById(R.id.email);
+            TextView gender_text = (TextView) getView().findViewById(R.id.gender);
+            TextView position = (TextView) getView().findViewById(R.id.position);
+            TextView last_deployment = (TextView) getView().findViewById(R.id.Last_deployment);
+            TextView currently = (TextView) getView().findViewById(R.id.Currently);
+
             ParseUser current = ParseUser.getCurrentUser();
             String username = current.getString("name");
             String email = current.getEmail();
+            String gender = current.getString("Gender");
+            String rank = current.getString("Position");
+            String deployed = current.getString("Last_deployment");
+            String currently_placed = current.getString("Currently");
+
+
+            gender_text.setText(gender);
             user_text.setText(username);
             email_text.setText(email);
+            position.setText(rank);
+            last_deployment.setText(deployed);
+            currently.setText(currently_placed);
         }
     }
 
