@@ -1,7 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.csumb.dmdc.Fragment.NotificationFragment">
+    tools:context="com.csumb.dmdc.Fragment.NotificationFragment"
+    android:background="#F8F8F8">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -9,5 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:layout_gravity="center" />
+        android:divider="@color/primary"
+        android:dividerHeight="1dp"
+        android:layout_gravity="center"
+        android:textFilterEnabled="false"
+        android:touchscreenBlocksFocus="true" />
 </LinearLayout>
