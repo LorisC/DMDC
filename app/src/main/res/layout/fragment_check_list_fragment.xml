@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.csumb.dmdc.Fragment.CheckListFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#F8F8F8">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -12,7 +13,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/listView"
-        android:choiceMode="singleChoice" />
+        android:choiceMode="singleChoice"
+        android:divider="@color/primary"
+        android:dividerHeight="1dp"
+        android:drawSelectorOnTop="false"
+        android:headerDividersEnabled="true"
+        android:footerDividersEnabled="true" />
     <com.melnykov.fab.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
