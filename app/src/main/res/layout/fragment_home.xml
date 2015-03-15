@@ -4,11 +4,11 @@
 
     <!-- TODO: Update blank fragment layout -->
 
+
     <view
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        class="us.costan.chrome.ChromeView"
-        android:id="@+id/gameUiView"
-        android:layout_gravity="center_horizontal|bottom" />
-
+        class="com.csumb.dmdc.JavaClass.TouchyWebView"
+        android:id="@+id/view"
+        android:layout_gravity="center_horizontal|top" />
 </FrameLayout>
