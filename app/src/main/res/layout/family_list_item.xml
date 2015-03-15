@@ -39,5 +39,13 @@
                 android:text="Medium Text"
                 android:id="@+id/link" />
         </LinearLayout>
+
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/insnumber" />
 </LinearLayout>

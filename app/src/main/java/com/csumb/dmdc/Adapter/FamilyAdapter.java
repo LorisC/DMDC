@@ -51,11 +51,14 @@ public class FamilyAdapter extends BaseAdapter {
         TextView name = (TextView) v.findViewById(R.id.name);
         TextView age = (TextView) v.findViewById(R.id.age);
         TextView link = (TextView) v.findViewById(R.id.link);
+        TextView insnumber = (TextView) v.findViewById(R.id.insnumber);
         ImageView img = (ImageView) v.findViewById(R.id.imageView3);
         Picasso.with(context).load(families.get(position).getParseFile("picture").getUrl()).into(img);
+
        name.setText("Name : " +families.get(position).getString("name"));
        age.setText("Age : " + families.get(position).getInt("age"));
-       link.setText("Link : " + families.get(position).getString("link"));
+       link.setText("Relation : " + families.get(position).getString("link"));
+        insnumber.setText("No ins : "+families.get(position).getString("insnumber"));
         return v;
     }
 }

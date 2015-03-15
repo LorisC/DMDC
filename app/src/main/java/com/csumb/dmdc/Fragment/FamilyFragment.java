@@ -99,6 +99,8 @@ public class FamilyFragment extends Fragment {
                         map.put("picture",media.getParseFile("picture"));}
                     if(media.getString("name")!=null){
                         map.put("name",media.getString("name"));}
+                    if(media.getString("insnumber")!=null){
+                        map.put("insnumber",media.getString("insnumber"));}
                     if(media.get("age")!=null)
                         map.put("age",media.getInt("age"));
                     if(media.get("link")!=null)
