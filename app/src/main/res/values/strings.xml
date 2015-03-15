@@ -8,12 +8,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string-array name="navdrav_array">
-        <item>HOME</item>
+        <item>DASHBOARD</item>
         <item>PROFILE</item>
         <item>NOTIFICATIONS</item>
         <item>CHECKLIST</item>
-        <item>FAMILY</item>
         <item>FEEDBACK</item>
+        <item>TWITTER</item>
         <item>LOGOUT</item>
     </string-array>
 
