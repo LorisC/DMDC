@@ -1,6 +1,7 @@
 package com.csumb.dmdc.Fragment;
 
 import android.app.Activity;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -9,10 +10,12 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.parse.ParseException;
 import com.parse.ParseFile;
+import com.parse.ParseImageView;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
@@ -125,7 +128,7 @@ public class Profile extends Fragment {
                 {
                     ParseFile username = (ParseFile) info.get("username");
                     ParseFile email = (ParseFile) info.get("email");
-                    ParseFile profile_pic = (ParseFile) info.get("profile_pic");
+                    ParseFile profile_pic = (ParseFile) info.get("Profile_pic");
                 }
             }
             catch(ParseException e)
@@ -140,9 +143,13 @@ public class Profile extends Fragment {
         {
             TextView user_text = (TextView) getView().findViewById(R.id.username);
             TextView email_text = (TextView) getView().findViewById(R.id.email);
+
+
+
             ParseUser current = ParseUser.getCurrentUser();
             String username = current.getUsername();
             String email = current.getEmail();
+
             user_text.setText(username);
             email_text.setText(email);
         }
