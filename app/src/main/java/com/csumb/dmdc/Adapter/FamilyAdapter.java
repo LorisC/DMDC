@@ -58,7 +58,7 @@ public class FamilyAdapter extends BaseAdapter {
        name.setText("Name : " +families.get(position).getString("name"));
        age.setText("Age : " + families.get(position).getInt("age"));
        link.setText("Relation : " + families.get(position).getString("link"));
-        insnumber.setText("No ins : "+families.get(position).getString("insnumber"));
+        insnumber.setText("Ins No.: "+families.get(position).getString("insnumber"));
         return v;
     }
 }

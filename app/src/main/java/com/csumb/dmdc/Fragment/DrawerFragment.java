@@ -139,13 +139,16 @@ public class DrawerFragment extends Fragment {
                 fragment = new Profile();
                 break;
             case 2:
-                //fragment = new NotificationFragment();
+                fragment = new NotificationFragment();
                 break;
             case 3:
                 fragment = new CheckListFragment();
                 break;
             case 4:
                 fragment = new FamilyFragment();
+                break;
+            case 5:
+                fragment = new FeedbackFragment();
                 break;
             case 6:
                 ParseUser.logOut();
