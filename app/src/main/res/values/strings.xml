@@ -23,5 +23,8 @@
     <string name="title_activity_crop">CropActivity</string>
     <string name="error_intro">error</string>
     <string name="error_blank_username">blank username</string>
+    <string name="feedbackmessage">jezhfoz</string>
+    <string name="feedbackmessagesended">jezhfoz</string>
+    <string name="send">Send</string>
 
 </resources>

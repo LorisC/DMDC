@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -19,6 +21,7 @@ import com.parse.ParseUser;
 
 import com.csumb.dmdc.R;
 import com.parse.ParseUser;
+import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
 import java.util.List;
@@ -40,6 +43,7 @@ public class Profile extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    ImageView img;
 
     List<ParseObject> ob;
     private List<Profile> Profile = null;
@@ -75,6 +79,7 @@ public class Profile extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
+
         }
     }
 
@@ -84,6 +89,12 @@ public class Profile extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile,container,false);
         startRemoteDataTask();
+        img = (ImageView) v.findViewById(R.id.imageView);
+        ParseFile file = ParseUser.getCurrentUser().getParseFile("profile_pic");
+        String str = ParseUser.getCurrentUser().getUsername();
+        Toast.makeText(getActivity(),str,Toast.LENGTH_LONG);
+        if(file!=null){
+        Picasso.with(getActivity()).load(file.getUrl()).into(img);}
         return v;
 
 
@@ -120,12 +131,20 @@ public class Profile extends Fragment {
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("User");
 
                 query.orderByDescending("createdAt");
+                query.whereEqualTo("_User",ParseUser.getCurrentUser());
                 ob = query.find();
                 for(ParseObject info : ob)
                 {
-                    ParseFile username = (ParseFile) info.get("username");
+                    ParseFile username = (ParseFile) info.get("name");
                     ParseFile email = (ParseFile) info.get("email");
+                    ParseFile gender = (ParseFile) info.get("Gender");
+                    ParseFile rank = (ParseFile) info.get("Position");
+                    ParseFile deployed = (ParseFile) info.get("Currently");
+                    ParseFile currently_placed = (ParseFile) info.get("Last_deployment");
                     ParseFile profile_pic = (ParseFile) info.get("profile_pic");
+                    if(profile_pic!=null){
+                        Picasso.with(getActivity()).load(profile_pic.getUrl())
+                                .centerCrop().into(img);}
                 }
             }
             catch(ParseException e)
@@ -140,11 +159,26 @@ public class Profile extends Fragment {
         {
             TextView user_text = (TextView) getView().findViewById(R.id.username);
             TextView email_text = (TextView) getView().findViewById(R.id.email);
+            TextView gender_text = (TextView) getView().findViewById(R.id.gender);
+            TextView position = (TextView) getView().findViewById(R.id.position);
+            TextView last_deployment = (TextView) getView().findViewById(R.id.Last_deployment);
+            TextView currently = (TextView) getView().findViewById(R.id.Currently);
+
             ParseUser current = ParseUser.getCurrentUser();
-            String username = current.getUsername();
+            String username = current.getString("name");
             String email = current.getEmail();
+            String gender = current.getString("Gender");
+            String rank = current.getString("Position");
+            String deployed = current.getString("Last_deployment");
+            String currently_placed = current.getString("Currently");
+
+
+            gender_text.setText(gender);
             user_text.setText(username);
             email_text.setText(email);
+            position.setText(rank);
+            last_deployment.setText(deployed);
+            currently.setText(currently_placed);
         }
     }
 
