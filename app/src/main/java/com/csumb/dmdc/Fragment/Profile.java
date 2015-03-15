@@ -14,6 +14,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.csumb.dmdc.Adapter.MissionAdapter;
+import com.csumb.dmdc.ParseClass.Mission;
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
@@ -26,6 +28,7 @@ import com.parse.ParseUser;
 import com.squareup.picasso.Picasso;
 
 import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Profile extends Fragment {
@@ -37,6 +40,8 @@ public class Profile extends Fragment {
     ListView mission;
     View header;
     View v;
+    ArrayList<Mission> missions;
+    MissionAdapter missionAdapter;
     ParseUser currentuser;
 
 
@@ -53,8 +58,8 @@ public class Profile extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        v = inflater.inflate(R.layout.fragment_profile,container,false);
-        header= getActivity().getLayoutInflater().inflate(R.layout.fragment_profile, null);
+        header= inflater.inflate(R.layout.profile_mission,container,false);
+        v= getActivity().getLayoutInflater().inflate(R.layout.fragment_profile, null);
 
         name = (TextView) v.findViewById(R.id.name);
         email = (TextView) v.findViewById(R.id.email);
@@ -62,25 +67,24 @@ public class Profile extends Fragment {
         current =(TextView) v.findViewById(R.id.position);
         lastdeploy = (TextView)v.findViewById(R.id.last);
         img = (ImageView) v.findViewById(R.id.imageView);
-        //mission =(ListView) header.findViewById(R.id.profile_list);
-        //mission.addHeaderView(v);
+
         currentuser =ParseUser.getCurrentUser();
         currentuser.fetchInBackground(new GetCallback<ParseObject>() {
             public void done(ParseObject object, ParseException e) {
                 if (e == null) {
-                    name.setText(""+currentuser.getString("name"));
-                    email.setText("Email : "+currentuser.getEmail());
-                    pay.setText("Pay : "+currentuser.getString("pay"));
-                    current.setText("Location : "+currentuser.getString("Currently"));
-                    lastdeploy.setText("Last Affectation :"+currentuser.getString("Last_deployment"));
+                    name.setText("" + currentuser.getString("name"));
+                    email.setText("Email : " + currentuser.getEmail());
+                    pay.setText("Pay : " + currentuser.getString("pay"));
+                    current.setText("Location : " + currentuser.getString("Currently"));
+                    lastdeploy.setText("Last Affectation :" + currentuser.getString("Last_deployment"));
                     Picasso.with(getActivity()).load(currentuser.getParseFile("profile_pic").getUrl()).into(img);
                 } else {
                     // Failure!
                 }
             }
         });
-        //startRemoteDataTask();
-        return v;
+        startRemoteDataTask();
+        return header;
 
 
 
@@ -114,13 +118,18 @@ public class Profile extends Fragment {
             //create
             try{
                 ParseQuery<ParseObject> query = new ParseQuery<ParseObject>("mission");
-
+                missions = new ArrayList<Mission>();
                 query.orderByDescending("createdAt");
-                query.whereEqualTo("user",ParseUser.getCurrentUser());
+                //query.whereEqualTo("user",ParseUser.getCurrentUser());
                 ob = query.find();
                 for(ParseObject info : ob)
                 {
-
+                    Mission map = new Mission();
+                    map.put("duration",info.getString("duration"));
+                    map.put("where",info.getString("where"));
+                    map.put("message",info.getString("message"));
+                    map.put("grade",info.getString("grade"));
+                    missions.add(map);
                 }
             }
             catch(ParseException e)
@@ -133,7 +142,11 @@ public class Profile extends Fragment {
         @Override
         protected void onPostExecute(Void result)
         {
-
+            mission =(ListView) header.findViewById(R.id.profile_list);
+            missionAdapter = new MissionAdapter(getActivity(),missions);
+            missionAdapter.notifyDataSetChanged();
+            mission.setAdapter(missionAdapter);
+            mission.addHeaderView(v);
         }
     }
 
