@@ -3,11 +3,14 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.csumb.dmdc.Fragment.FamilyFragment">
+    tools:context="com.csumb.dmdc.Fragment.FamilyFragment"
+    android:background="#F8F8F8">
 
     <!-- TODO: Update blank fragment layout -->
 
     <ListView
+        android:divider="@color/primary"
+        android:dividerHeight="1dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/listView2"
@@ -17,6 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
+
         android:layout_margin="16dp"
         android:src="@drawable/ic_launcher"
         fab:fab_colorNormal="@color/primary"
