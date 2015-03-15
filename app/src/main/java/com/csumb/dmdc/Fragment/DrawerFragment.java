@@ -40,6 +40,7 @@ public class DrawerFragment extends Fragment {
     private ActionBarDrawerToggle mDrawerToggle;
     private EditText review;
     private String streview;
+    private LinearLayout profiledrawer;
 
     private String[] navMenuTitles;
 
@@ -59,6 +60,13 @@ public class DrawerFragment extends Fragment {
         mDrawerList = (ListView) v.findViewById(R.id.left_drawer);
         navMenuTitles = getResources().getStringArray(R.array.navdrav_array);
         linearLayout = (LinearLayout) v.findViewById(R.id.relativedrawer);
+        profiledrawer = (LinearLayout) v.findViewById(R.id.profiledrawer);
+        profiledrawer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                displayView(1);
+            }
+        });
         setData();
         mDrawerList.setOnItemClickListener(new ListView.OnItemClickListener() {
             @Override
@@ -132,7 +140,7 @@ public class DrawerFragment extends Fragment {
         // update the main content by replacing fragments
         android.app.Fragment fragment = null;
         switch (position) {
-            case 0:
+            case 5:
                 fragment = new HomeFragment();
                 break;
             case 1:
@@ -144,10 +152,10 @@ public class DrawerFragment extends Fragment {
             case 3:
                 fragment = new CheckListFragment();
                 break;
-            case 4:
+            case 0:
                 fragment = new FamilyFragment();
                 break;
-            case 5:
+            case 4:
                 fragment = new FeedbackFragment();
                 break;
             case 6:

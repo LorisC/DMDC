@@ -43,6 +43,7 @@ public class Application extends android.app.Application {
         ParseObject.registerSubclass(CheckList.class);
         ParseObject.registerSubclass(Family.class);
         ParseObject.registerSubclass(Feedback.class);
+        ParseObject.registerSubclass(Mission.class);
         Parse.initialize(this, "x4EvKqMkdeDhCy7r3C7TlhrUhWupVijQj6dL3A5b",
                 "2095PSj9B5olMyyg7e9BcFrdr8WL4MReTwb4buWP");
         //ParseInstallation.

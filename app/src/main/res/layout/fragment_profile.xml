@@ -8,6 +8,7 @@
     <!-- TODO: Update blank fragment layout -->
 
 
+<<<<<<< HEAD
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="180dp"
@@ -167,5 +168,71 @@
                 android:textColor = "#000000"/>
         </TableRow>
     </TableLayout>
+=======
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:id="@+id/imageView"
+            android:layout_gravity="left|top"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Large Text"
+            android:id="@+id/name"
+            android:layout_gravity="left|bottom"
+            android:textSize="50dp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="120dp"
+        android:background="#ffc4c4c4">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="New Text"
+            android:id="@+id/email"
+            android:textColor="#ff000000"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/position"
+            android:textColor="#ff000000"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/pay"
+            android:textColor="#ff000000"
+            android:layout_marginLeft="10dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/last"
+            android:textColor="#ff000000"
+            android:layout_marginLeft="10dp" />
+    </LinearLayout>
+>>>>>>> master
 
 </LinearLayout>
