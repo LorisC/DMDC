@@ -145,7 +145,7 @@ public class DrawerFragment extends Fragment {
                 fragment = new CheckListFragment();
                 break;
             case 4:
-
+                fragment = new FamilyFragment();
                 break;
             case 6:
                 ParseUser.logOut();
