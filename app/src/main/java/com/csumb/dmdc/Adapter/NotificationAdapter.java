@@ -43,8 +43,8 @@ public class NotificationAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View v = View.inflate(context, R.layout.notification_list_item,null);
-        TextView textView = (TextView) v.findViewById(R.id.textView2);
+        View v = View.inflate(context, R.layout.checklist_list_item,null);
+        TextView textView = (TextView) v.findViewById(R.id.checkText);
         textView.setText(list.get(position));
 
         return v;
