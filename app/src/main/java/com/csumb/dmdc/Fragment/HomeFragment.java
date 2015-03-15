@@ -35,9 +35,9 @@ public class HomeFragment extends Fragment {
         v =  inflater.inflate(R.layout.fragment_home, container, false);
         String myurl = "https://www.dmdc.osd.mil/milconnect/faces/index.jspx?_afrLoop=1466755800658654&_afrWindowMode=0&_adf.ctrl-state=ditxj6hru_4";
         TouchyWebView myWebView = (TouchyWebView) v.findViewById(R.id.view);
-        myWebView.loadUrl("http://www.lifelockcodes.com/m/blog/item/19-id-theft-scam-targets-military-families");
+        myWebView.loadUrl("https://mobile.twitter.com/dmdc");
         WebSettings webSettings = myWebView.getSettings();
-        webSettings.setJavaScriptEnabled(false);
+        webSettings.setJavaScriptEnabled(true);
         myWebView.setWebViewClient(new MyWebViewClient());
 
         return v;
