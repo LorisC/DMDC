@@ -147,6 +147,9 @@ public class DrawerFragment extends Fragment {
             case 4:
                 fragment = new FamilyFragment();
                 break;
+            case 5:
+                fragment = new FeedbackFragment();
+                break;
             case 6:
                 ParseUser.logOut();
                 Toast.makeText(getActivity().getApplicationContext(), "Disconnected...", Toast.LENGTH_LONG).show();
